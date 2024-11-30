@@ -1,8 +1,23 @@
 import React from "react";
 import { MdOutlineCancel } from "react-icons/md";
+import { toast, Bounce } from "react-toastify";
 
-const SignUp = ({toggle,close}) => {
-
+const SignUp = ({ toggle, close }) => {
+  const handleForm = (e) => {
+    e.preventDefault();
+    toast("Wow you have a successfully signed up", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+    close();
+  };
   return (
     <div className="dark:bg-slate-800 w-[400px] p-6 bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl">
       <div className="flex flex-col gap-3 mb-6">
@@ -24,21 +39,24 @@ const SignUp = ({toggle,close}) => {
           today!
         </p>
       </div>
-      <form action="#" onSubmit={(e) => e.preventDefault()}>
+      <form action="#" onSubmit={handleForm}>
         <div className="flex flex-col gap-5">
           <input
+            required
             className="w-full outline-none rounded-lg py-3 px-5 border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             type="text"
             placeholder="Full Name"
             id="name"
           />
           <input
+            required
             className="w-full outline-none rounded-lg py-3 px-5 border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             type="email"
             placeholder="Email Address"
             id="email"
           />
           <input
+            required
             className="w-full outline-none rounded-lg py-3 px-5 border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
             type="password"
             placeholder="Password"
