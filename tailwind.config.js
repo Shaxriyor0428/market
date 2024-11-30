@@ -13,6 +13,8 @@ export default {
       screens: {
         "custom-md": "800px",
         "custom-sm": "520px",
+        "custom-search": "622px",
+        "custome-search-sm": "440px",
       },
     },
     container: {

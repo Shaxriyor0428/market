@@ -93,15 +93,15 @@ const Products = () => {
         <div className="py-8 container flex items-center justify-between">
           <input
             ref={searchValue}
-            onChange={searchData} // Qidiruvni ishlatish
+            onChange={searchData}
             type="text"
             placeholder="Search"
-            className="w-[450px] py-3 px-6 rounded-lg border border-gray-400 outline-none"
+            className="w-[450px] py-3 px-6 rounded-lg border border-gray-400 outline-none max-md:w-[250px] max-custom-search:w-[200px] max-custome-search-sm:w-[150px]"
           />
           <select
             ref={categoryValue}
-            onChange={getByCategory} // Kategoriya tanlash
-            className="w-[300px] py-3 px-6 rounded-lg border border-gray-400 outline-none"
+            onChange={getByCategory}
+            className="w-[300px] py-3 px-6 rounded-lg border border-gray-400 outline-none max-md:w-[250px] max-custom-search:w-[200px] max-custome-search-sm:w-[150px]"
           >
             <option hidden>Select category</option>
             <option value="All">All Products</option>
