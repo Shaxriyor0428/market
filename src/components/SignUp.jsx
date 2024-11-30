@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 import { toast, Bounce } from "react-toastify";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const SignUp = ({ toggle, close }) => {
+  const [showPassword, setShowPassword] = useState(false);
   const handleForm = (e) => {
     e.preventDefault();
-
     toast("Wow you have successfully signed up", {
       position: "top-center",
       autoClose: 5000,
@@ -15,7 +16,7 @@ const SignUp = ({ toggle, close }) => {
       draggable: true,
       progress: undefined,
       theme: "light",
-      transition: Bounce, 
+      transition: Bounce,
     });
 
     close();
@@ -57,13 +58,28 @@ const SignUp = ({ toggle, close }) => {
             placeholder="Email Address"
             id="email"
           />
-          <input
-            required
-            className="w-full outline-none rounded-lg py-3 px-5 border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-            type="password"
-            placeholder="Password"
-            id="password"
-          />
+          <div className="showpassword relative">
+            <input
+              required
+              className="w-full outline-none rounded-lg py-3 px-5 border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              id="password"
+            />
+            {showPassword ? (
+              <FaRegEye
+                onClick={() => setShowPassword(!showPassword)}
+                size={20}
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer"
+              />
+            ) : (
+              <FaRegEyeSlash
+                onClick={() => setShowPassword(!showPassword)}
+                size={20}
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-blue-500"
+              />
+            )}
+          </div>
         </div>
         <button className="w-full mt-6 bg-blue-600 text-white py-3 rounded-lg text-lg font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all">
           Sign Up

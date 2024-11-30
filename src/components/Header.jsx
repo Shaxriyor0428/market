@@ -23,7 +23,7 @@ const Header = () => {
   const header_links = HEADER_LINKS.map((item, inx) => (
     <li
       key={inx}
-      className="item hover:text-[#1e8fffd4] transition duration-300"
+      className="item hover:text-[#1e8fffd4] transition duration-300 max-lg:hidden"
     >
       <a
         href="#"
