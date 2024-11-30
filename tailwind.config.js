@@ -4,11 +4,14 @@ export default {
   theme: {
     fontFamily: {
       motrix: ["Motrix", "san-serif"],
-      oswald:["Oswald"]
+      oswald: ["Oswald"],
     },
     extend: {
       backgroundImage: {
         nature_img: "url('assets/nature.jpg)",
+      },
+      screens: {
+        "custom-md": "800px",
       },
     },
     container: {

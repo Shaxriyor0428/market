@@ -16,11 +16,11 @@ const ImageView = ({ data }) => {
         mousewheel={true}
         keyboard={true}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper select-none w-[900px] max-lg:w-[700px] bg-gradient-to-r from-white via-gray-100 to-white dark:from-slate-800 dark:via-slate-700 dark:to-slate-800 rounded-lg shadow-lg overflow-hidden"
+        className="mySwiper select-none w-[900px] max-lg:w-[700px] max-custom-md:w-[600px] bg-gradient-to-r from-white via-gray-100 to-white dark:from-slate-800 dark:via-slate-700 dark:to-slate-800 rounded-lg shadow-lg overflow-hidden"
       >
         {data?.images?.map((url, inx) => (
           <SwiperSlide key={inx}>
-            <div className="flex h-[500px] max-lg:h-[450px]">
+            <div className="flex h-[500px] max-lg:h-[450px] max-custom-md:h-[400px]">
               <div className="w-[70%] bg-gray-100 dark:bg-slate-900 flex justify-center items-center">
                 <img
                   src={url}
@@ -29,14 +29,14 @@ const ImageView = ({ data }) => {
                 />
               </div>
 
-              <div className="w-[30%] bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200 p-6 flex flex-col justify-center items-center space-y-4 gap-3">
-                <h1 className="font-oswald text-3xl font-bold text-center text-blue-600 dark:text-blue-400">
+              <div className="overflow-hidden w-[30%] bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-200 p-6 flex flex-col justify-center items-center space-y-4 gap-3 max-custom-md:gap-0">
+                <h1 className="font-oswald text-3xl font-bold text-center text-blue-600 dark:text-blue-400 max-custom-md:text-2xl">
                   {data?.title}
                 </h1>
                 <h2 className="text-xl font-semibold text-center text-gray-600 dark:text-gray-400">
                   {data?.category}
                 </h2>
-                <p className="text-md text-center leading-relaxed">
+                <p className="text-md text-center leading-relaxed max-custom-md:text-[14px]">
                   {data?.description}
                 </p>
               </div>
