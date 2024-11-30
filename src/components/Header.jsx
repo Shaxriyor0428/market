@@ -35,7 +35,7 @@ const Header = () => {
   ));
 
   return (
-    <>
+    <div className="h-20">
       {signIn && (
         <Modal close={() => setSignIn(false)}>
           <SignIn toggle={toggleActions} close={() => setSignIn(false)} />
@@ -46,7 +46,7 @@ const Header = () => {
           <SignUp toggle={toggleActions} close={() => setSignUp(false)} />
         </Modal>
       )}
-      <div className="header h-20 w-full bg-gradient-to-r bg-blue-700 text-white shadow-md dark:bg-slate-800">
+      <div className="fixed header h-20 w-full bg-gradient-to-r bg-blue-700 text-white shadow-md dark:bg-slate-800">
         <div className="container h-full flex items-center justify-between px-6">
           <a href="https://www.youtube.com">
             <img
@@ -94,7 +94,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
