@@ -61,7 +61,7 @@ const Header = () => {
             <li>
               <button
                 onClick={() => setSignIn(true)}
-                className="rounded-lg bg-white text-blue-700 font-semibold py-2 px-6 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md"
+                className="max-sm:text-md max-sm:text-nowrap max-sm:hidden rounded-lg bg-white text-blue-700 font-semibold py-2 px-6 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md"
               >
                 Sign In
               </button>
@@ -69,7 +69,7 @@ const Header = () => {
             <li>
               <button
                 onClick={() => setSignUp(true)}
-                className="rounded-lg bg-white text-blue-700 font-semibold py-2 px-6 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md"
+                className="max-sm:text-md max-sm:text-nowrap max-sm:hidden rounded-lg bg-white text-blue-700 font-semibold py-2 px-6 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md"
               >
                 Sign Up
               </button>

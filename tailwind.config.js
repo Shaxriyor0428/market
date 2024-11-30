@@ -12,6 +12,7 @@ export default {
       },
       screens: {
         "custom-md": "800px",
+        "custom-sm": "520px",
       },
     },
     container: {
