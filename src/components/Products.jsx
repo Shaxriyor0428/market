@@ -7,36 +7,33 @@ import ImageView from "./ImageView";
 const API_URL = "https://dummyjson.com";
 
 const Products = () => {
-  const [data, setData] = useState([]); // Mahsulotlar ro'yxati
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [modalData, setModalData] = useState(null); // Modal ma'lumotlari
-  const [categoryList, setCategoryList] = useState([]); // Kategoriyalar ro'yxati
-  const searchValue = useRef(null); // Qidiruv input
-  const categoryValue = useRef(""); // Kategoriya select
+  const [modalData, setModalData] = useState(null);
+  const [categoryList, setCategoryList] = useState([]);
+  const searchValue = useRef(null);
+  const categoryValue = useRef("");
 
-  // Mahsulotlar va kategoriya ro'yxatini olish
   useEffect(() => {
     setLoading(true);
     axios
       .get(`${API_URL}/products`)
       .then((res) => {
-        setData(res.data.products); // Mahsulotlar ro'yxatini o'rnatish
+        setData(res.data.products);
       })
       .catch((err) => console.log(err))
       .finally(() => {
         setLoading(false);
       });
 
-    // Kategoriya ro'yxatini olish
     axios
       .get(`${API_URL}/products/category-list`)
       .then((res) => {
-        setCategoryList(res.data); // Kategoriyalar ro'yxatini o'rnatish
+        setCategoryList(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  // Qidiruv uchun API so'rovini yuborish
   const searchData = async () => {
     try {
       const res = await axios.get(
@@ -44,44 +41,42 @@ const Products = () => {
           searchValue.current.value || ""
         }`
       );
-      setData(res.data.products); // Qidiruvdan olingan mahsulotlarni ko'rsatish
+      setData(res.data.products);
     } catch (error) {
       console.error(error);
     }
   };
 
-  // Kategoriya bo'yicha filtrlash
   const getByCategory = async () => {
     try {
       if (categoryValue.current.value === "All") {
         const res = await axios.get(`https://dummyjson.com/products`);
-        setData(res.data.products); // Barcha mahsulotlar
+        setData(res.data.products);
       } else {
         const res = await axios.get(
           `https://dummyjson.com/products/category/${categoryValue.current.value}`
         );
-        setData(res.data.products); // Tanlangan kategoriya bo'yicha mahsulotlar
+        setData(res.data.products);
       }
     } catch (error) {
       console.error(error);
     }
   };
 
-  // Mahsulotlarni render qilish
   const productItems = data?.map((pro) => (
     <div
       className="dark:bg-slate-500 p-3 shadow-lg flex gap-2 flex-col justify-center items-center text-center"
       key={pro.id}
     >
       <img
-        onClick={() => setModalData(pro)} // Modalni ochish
+        onClick={() => setModalData(pro)}
         className="w-full h-60 object-contain"
         src={pro.thumbnail}
         alt={pro.title}
       />
       <h3>{pro.title}</h3>
       <div key={pro.rating} className="flex gap-1">
-        <Stars rating={pro.rating} /> {/* Yulduzlar reytingi */}
+        <Stars rating={pro.rating} /> {}
       </div>
     </div>
   ));

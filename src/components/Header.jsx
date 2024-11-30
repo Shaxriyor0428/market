@@ -8,7 +8,7 @@ import Modal from "./Modal";
 import SignUp from "./SignUp";
 
 const Header = () => {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(false); // Dark mode state
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,12 +19,21 @@ const Header = () => {
   };
 
   const darkMode = () => {
+    // Toggles the dark mode on the body element
     document.body.classList.toggle("dark");
-    setDark(!dark);
+    setDark(!dark); // Updates the dark mode state
   };
 
   useEffect(() => {
+    // If dark mode is enabled by default
+    if (dark) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+
     const handleResize = () => {
+      // Close the menu if the screen width is greater than 1024px
       if (window.innerWidth > 1024) {
         setMenuOpen(false);
       }
@@ -34,7 +43,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [dark]); // Re-run when the dark state changes
 
   const header_links = HEADER_LINKS.map((item, inx) => (
     <li
@@ -127,7 +136,7 @@ const Header = () => {
 
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="lg:hidden text-white"
+              className="text-white md:hidden" // Mobile menu button
             >
               {menuOpen ? (
                 <AiOutlineClose size={25} />
@@ -138,14 +147,15 @@ const Header = () => {
           </div>
         </div>
 
+        {/* Mobile Menu */}
         {menuOpen && (
-          <div className="absolute top-20 right-0 w-1/2 bg-white shadow-lg dark:bg-slate-800">
+          <div className="absolute top-20 right-0 w-full bg-white shadow-lg dark:bg-slate-800 md:hidden">
             <ul className="flex flex-col items-center py-4 gap-3 text-gray-700 dark:text-gray-200">
               {mobileMenuLinks}
               <li>
                 <button
                   onClick={() => setSignIn(true)}
-                  className="max-lg:hidden max-md:block w-full text-center py-2 px-3 bg-blue-600 text-white font-semibold rounded-md shadow-md"
+                  className="w-full text-center py-2 px-3 bg-blue-600 text-white font-semibold rounded-md shadow-md"
                 >
                   Sign In
                 </button>
@@ -153,7 +163,7 @@ const Header = () => {
               <li>
                 <button
                   onClick={() => setSignUp(true)}
-                  className="max-lg:hidden max-md:block w-full text-center py-2 px-3 bg-blue-600 text-white font-semibold rounded-md shadow-md"
+                  className="w-full text-center py-2 px-3 bg-blue-600 text-white font-semibold rounded-md shadow-md"
                 >
                   Sign Up
                 </button>
