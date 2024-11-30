@@ -5,7 +5,8 @@ import { toast, Bounce } from "react-toastify";
 const SignUp = ({ toggle, close }) => {
   const handleForm = (e) => {
     e.preventDefault();
-    toast("Wow you have a successfully signed up", {
+
+    toast("Wow you have successfully signed up", {
       position: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -14,8 +15,9 @@ const SignUp = ({ toggle, close }) => {
       draggable: true,
       progress: undefined,
       theme: "light",
-      transition: Bounce,
+      transition: Bounce, 
     });
+
     close();
   };
   return (

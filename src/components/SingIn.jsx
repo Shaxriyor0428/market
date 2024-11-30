@@ -3,21 +3,22 @@ import { MdOutlineCancel } from "react-icons/md";
 import { toast, Bounce } from "react-toastify";
 
 const SignIn = ({ toggle, close }) => {
-    const handleForm = (e) => {
-      e.preventDefault();
-      toast("Wow you have a successfully signed in", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
-      close();
-    };
+  const handleForm = (e) => {
+    e.preventDefault();
+    toast("Wow you have successfully signed in", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce, 
+    });
+
+    close();
+  };
   const [open, setOpen] = useState(false);
   return (
     <div className="dark:bg-slate-800 max-w-[400px] p-6  bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl">
