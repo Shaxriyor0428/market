@@ -24,7 +24,7 @@ const SignIn = ({ toggle, close }) => {
   };
 
   return (
-    <div className="dark:bg-slate-800 max-w-[400px] w-[95%] p-6 bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl mx-auto relative">
+    <div className="dark:bg-slate-800 max-w-[400px] w-[95%] p-6 max-custom-sm:w-[280px] bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl mx-auto relative">
       {/* Cancel Button */}
       <button
         onClick={close}
