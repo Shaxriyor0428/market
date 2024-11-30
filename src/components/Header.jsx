@@ -8,7 +8,7 @@ import Modal from "./Modal";
 import SignUp from "./SignUp";
 
 const Header = () => {
-  const [dark, setDark] = useState(false); // Dark mode state
+  const [dark, setDark] = useState(false); 
   const [signIn, setSignIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,13 +19,11 @@ const Header = () => {
   };
 
   const darkMode = () => {
-    // Toggles the dark mode on the body element
     document.body.classList.toggle("dark");
-    setDark(!dark); // Updates the dark mode state
+    setDark(!dark);
   };
 
   useEffect(() => {
-    // If dark mode is enabled by default
     if (dark) {
       document.body.classList.add("dark");
     } else {
@@ -33,7 +31,6 @@ const Header = () => {
     }
 
     const handleResize = () => {
-      // Close the menu if the screen width is greater than 1024px
       if (window.innerWidth > 1024) {
         setMenuOpen(false);
       }
@@ -43,7 +40,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [dark]); // Re-run when the dark state changes
+  }, [dark]);
 
   const header_links = HEADER_LINKS.map((item, inx) => (
     <li
@@ -136,7 +133,7 @@ const Header = () => {
 
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="text-white md:hidden" // Mobile menu button
+              className="text-white md:hidden" 
             >
               {menuOpen ? (
                 <AiOutlineClose size={25} />
@@ -147,7 +144,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {menuOpen && (
           <div className="absolute top-20 right-0 w-full bg-white shadow-lg dark:bg-slate-800 md:hidden">
             <ul className="flex flex-col items-center py-4 gap-3 text-gray-700 dark:text-gray-200">
