@@ -26,7 +26,7 @@ const Header = () => {
       className="item hover:text-[#1e8fffd4] transition duration-300"
     >
       <a
-        href={item.url}
+        href="#"
         className="hover:underline font-medium text-lg px-3 py-1 rounded-md hover:bg-gray-100 transition duration-300"
       >
         {item.name}
