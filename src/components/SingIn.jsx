@@ -22,29 +22,34 @@ const SignIn = ({ toggle, close }) => {
 
     close();
   };
-  const [open, setOpen] = useState(false);
+
   return (
-    <div className="dark:bg-slate-800 max-w-[400px] p-6  bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl">
+    <div className="dark:bg-slate-800 max-w-[400px] w-[95%] p-6 bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl mx-auto relative">
+      {/* Cancel Button */}
+      <button
+        onClick={close}
+        className="absolute top-4 right-4 p-2 rounded-full bg-gray-300"
+      >
+        <MdOutlineCancel
+          size={22}
+          className="text-gray-600 bg-gray-300 rounded-full"
+        />
+      </button>
+
+      {/* Header */}
       <div className="flex flex-col gap-3 mb-6 dark:text-white">
-        <button
-          onClick={close}
-          className="absolute top-5 right-7 p-2 rounded-full bg-gray-300"
-        >
-          <MdOutlineCancel
-            size={22}
-            className="text-gray-600 bg-gray-300 rounded-full"
-          />
-        </button>
-        <h2 className="text-center text-3xl font-bold text-blue-600 dark:text-white">
+        <h2 className="text-center text-2xl md:text-3xl font-bold text-blue-600 dark:text-white">
           Sign In
         </h2>
-        <p className="text-center text-lg text-gray-600 dark:text-white">
+        <p className="text-center text-sm md:text-lg text-gray-600 dark:text-white">
           Stay updated on your{" "}
           <span className="font-semibold text-blue-500">
             professional world
           </span>
         </p>
       </div>
+
+      {/* Form */}
       <form action="#" onSubmit={handleForm}>
         <div className="flex flex-col gap-5">
           <input
@@ -54,7 +59,7 @@ const SignIn = ({ toggle, close }) => {
             placeholder="Username"
             id="username"
           />
-          <div>
+          <div className="relative">
             <input
               required
               className="w-full outline-none rounded-lg py-3 px-5 border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
@@ -66,13 +71,13 @@ const SignIn = ({ toggle, close }) => {
               <FaRegEye
                 onClick={() => setShowPassword(!showPassword)}
                 size={20}
-                className="absolute top-1/2 right-10 transform translate-y-4 cursor-pointer"
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer"
               />
             ) : (
               <FaRegEyeSlash
                 onClick={() => setShowPassword(!showPassword)}
                 size={20}
-                className="absolute top-1/2 right-10 transform translate-y-4 cursor-pointer text-gray-500 hover:text-blue-500"
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer text-gray-500 hover:text-blue-500"
               />
             )}
           </div>
@@ -81,6 +86,8 @@ const SignIn = ({ toggle, close }) => {
           Sign In
         </button>
       </form>
+
+      {/* Footer */}
       <p className="mt-4 text-center text-gray-600 dark:text-white text-sm">
         Don't have an account?{" "}
         <a
