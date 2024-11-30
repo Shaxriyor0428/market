@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 
-const SignIn = ({toggle,close}) => {
-  const  [open,setOpen] = useState(false);
+const SignIn = ({ toggle, close }) => {
+  const [open, setOpen] = useState(false);
   return (
     <div className="dark:bg-slate-800 max-w-[400px] p-6  bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl">
       <div className="flex flex-col gap-3 mb-6 dark:text-white">
-        <button onClick={close} className="absolute top-5 right-7 p-2 rounded-full bg-gray-300">
-          <MdOutlineCancel size={22} className="text-gray-600 bg-gray-300 rounded-full"/>
+        <button
+          onClick={close}
+          className="absolute top-5 right-7 p-2 rounded-full bg-gray-300"
+        >
+          <MdOutlineCancel
+            size={22}
+            className="text-gray-600 bg-gray-300 rounded-full"
+          />
         </button>
         <h2 className="text-center text-3xl font-bold text-blue-600 dark:text-white">
           Sign In
@@ -19,7 +25,7 @@ const SignIn = ({toggle,close}) => {
           </span>
         </p>
       </div>
-      <form action="#">
+      <form action="#" onSubmit={(e) => e.preventDefault()}>
         <div className="flex flex-col gap-5">
           <input
             className="w-full outline-none rounded-lg py-3 px-5 border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"

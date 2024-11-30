@@ -2,6 +2,7 @@ import React from "react";
 import { MdOutlineCancel } from "react-icons/md";
 
 const SignUp = ({toggle,close}) => {
+
   return (
     <div className="dark:bg-slate-800 w-[400px] p-6 bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl">
       <div className="flex flex-col gap-3 mb-6">
@@ -23,7 +24,7 @@ const SignUp = ({toggle,close}) => {
           today!
         </p>
       </div>
-      <form action="#">
+      <form action="#" onSubmit={(e) => e.preventDefault()}>
         <div className="flex flex-col gap-5">
           <input
             className="w-full outline-none rounded-lg py-3 px-5 border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
