@@ -89,7 +89,7 @@ const Products = () => {
   return (
     <>
       {/* Qidiruv va kategoriya paneli */}
-      <section className="bg-gray-200 sticky top-0 left-0 w-full">
+      <section className="bg-gray-200 sticky top-0 left-0 w-full dark:bg-slate-800">
         <div className="py-8 container flex items-center justify-between">
           <input
             ref={searchValue}
