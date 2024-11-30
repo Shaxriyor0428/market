@@ -23,11 +23,10 @@ const Header = () => {
     setDark(!dark);
   };
 
-  // Menu avtomatik yopilishini kuzatish
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 1024) {
-        setMenuOpen(false); // Avtomatik yopiladi, agar max-lg'dan o'tsa
+        setMenuOpen(false);
       }
     };
 
@@ -66,102 +65,104 @@ const Header = () => {
   ));
 
   return (
-    <div className="h-20">
-      {signIn && (
-        <Modal close={() => setSignIn(false)}>
-          <SignIn toggle={toggleActions} close={() => setSignIn(false)} />
-        </Modal>
-      )}
-      {signUp && (
-        <Modal close={() => setSignUp(false)}>
-          <SignUp toggle={toggleActions} close={() => setSignUp(false)} />
-        </Modal>
-      )}
+    <>
+      <div className="h-20">
+        {signIn && (
+          <Modal close={() => setSignIn(false)}>
+            <SignIn toggle={toggleActions} close={() => setSignIn(false)} />
+          </Modal>
+        )}
+        {signUp && (
+          <Modal close={() => setSignUp(false)}>
+            <SignUp toggle={toggleActions} close={() => setSignUp(false)} />
+          </Modal>
+        )}
 
-      <div className="fixed header h-20 w-full bg-gradient-to-r bg-blue-700 text-white shadow-md dark:bg-slate-800">
-        <div className="container h-full flex items-center justify-between px-6">
-          <a href="https://www.youtube.com">
-            <img
-              className="w-[130px] rounded-lg shadow-lg"
-              src="https://nwafoundation.org/wp-content/uploads/2017/04/FedEx-Logo-PNG-Transparent.png"
-              alt="logo"
-            />
-          </a>
+        <div className="fixed header h-20 w-full bg-gradient-to-r bg-blue-700 text-white shadow-md dark:bg-slate-800">
+          <div className="container h-full flex items-center justify-between px-6">
+            <a href="https://www.youtube.com">
+              <img
+                className="w-[130px] rounded-lg shadow-lg"
+                src="https://nwafoundation.org/wp-content/uploads/2017/04/FedEx-Logo-PNG-Transparent.png"
+                alt="logo"
+              />
+            </a>
 
-          <ul className="hidden md:flex gap-5 items-center">
-            {header_links}
-            <li>
-              <button
-                onClick={() => setSignIn(true)}
-                className="rounded-lg bg-white text-blue-700 font-semibold py-2 px-6 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md"
-              >
-                Sign In
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => setSignUp(true)}
-                className="rounded-lg bg-white text-blue-700 font-semibold py-2 px-6 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md"
-              >
-                Sign Up
-              </button>
-            </li>
-            <li>
-              {dark ? (
+            <ul className="hidden md:flex gap-5 items-center">
+              {header_links}
+              <li>
                 <button
-                  onClick={darkMode}
-                  className="rounded-full bg-white text-black p-3 hover:bg-blue-500 shadow-lg transition duration-300 hover:text-yellow-400"
+                  onClick={() => setSignIn(true)}
+                  className="rounded-lg bg-white text-blue-700 font-semibold py-2 px-6 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md"
                 >
-                  <MdDarkMode size={20} />
+                  Sign In
                 </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setSignUp(true)}
+                  className="rounded-lg bg-white text-blue-700 font-semibold py-2 px-6 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-md"
+                >
+                  Sign Up
+                </button>
+              </li>
+              <li>
+                {dark ? (
+                  <button
+                    onClick={darkMode}
+                    className="rounded-full bg-white text-black p-3 hover:bg-blue-500 shadow-lg transition duration-300 hover:text-yellow-400"
+                  >
+                    <MdDarkMode size={20} />
+                  </button>
+                ) : (
+                  <button
+                    onClick={darkMode}
+                    className="rounded-full bg-gray-800 text-white p-3 hover:bg-gray-700 shadow-lg transition duration-300"
+                  >
+                    <CiLight size={20} className="font-bold" />
+                  </button>
+                )}
+              </li>
+            </ul>
+
+            <button
+              onClick={() => setMenuOpen((prev) => !prev)}
+              className="lg:hidden text-white"
+            >
+              {menuOpen ? (
+                <AiOutlineClose size={25} />
               ) : (
-                <button
-                  onClick={darkMode}
-                  className="rounded-full bg-gray-800 text-white p-3 hover:bg-gray-700 shadow-lg transition duration-300"
-                >
-                  <CiLight size={20} className="font-bold" />
-                </button>
+                <AiOutlineMenu size={25} />
               )}
-            </li>
-          </ul>
-
-          <button
-            onClick={() => setMenuOpen((prev) => !prev)}
-            className="lg:hidden text-white"
-          >
-            {menuOpen ? (
-              <AiOutlineClose size={25} />
-            ) : (
-              <AiOutlineMenu size={25} />
-            )}
-          </button>
+            </button>
+          </div>
         </div>
+
+        {menuOpen && (
+          <div className="absolute top-20 right-0 w-1/2 bg-white shadow-lg dark:bg-slate-800">
+            <ul className="flex flex-col items-center py-4 gap-3 text-gray-700 dark:text-gray-200">
+              {mobileMenuLinks}
+              <li>
+                <button
+                  onClick={() => setSignIn(true)}
+                  className="max-lg:hidden max-md:block w-full text-center py-2 px-3 bg-blue-600 text-white font-semibold rounded-md shadow-md"
+                >
+                  Sign In
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setSignUp(true)}
+                  className="max-lg:hidden max-md:block w-full text-center py-2 px-3 bg-blue-600 text-white font-semibold rounded-md shadow-md"
+                >
+                  Sign Up
+                </button>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
-
-      {menuOpen && (
-        <div className="absolute top-20 right-0 w-1/2 bg-white shadow-lg dark:bg-slate-800">
-          <ul className="flex flex-col items-center py-4 gap-3 text-gray-700 dark:text-gray-200">
-            {mobileMenuLinks}
-            <li>
-              <button
-                onClick={() => setSignIn(true)}
-                className="max-lg:hidden max-md:block w-full text-center py-2 px-3 bg-blue-600 text-white font-semibold rounded-md shadow-md"
-              >
-                Sign In
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => setSignUp(true)}
-                className="max-lg:hidden max-md:block w-full text-center py-2 px-3 bg-blue-600 text-white font-semibold rounded-md shadow-md"
-              >
-                Sign Up
-              </button>
-            </li>
-          </ul>
-        </div>
-      )}
-    </div>
+    </>
   );
 };
 

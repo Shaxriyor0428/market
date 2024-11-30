@@ -47,14 +47,18 @@ const Products = () => {
   ));
 
   return (
-    <div className="w-full h-full dark:bg-slate-800">
-      <div className="container grid grid-cols-4 gap-4 max-lg:grid-cols-3 max-custom-md:grid-cols-2 max-sm:grid-cols-1">{productItems}</div>
-      {modalData && (
-        <Modal close={() => setModalData(null)}>
-          <ImageView data={modalData} />
-        </Modal>
-      )}
-    </div>
+    <>
+      <div className="w-full h-full dark:bg-slate-800">
+        <div className="container grid grid-cols-4 gap-4 max-lg:grid-cols-3 max-custom-md:grid-cols-2 max-sm:grid-cols-1">
+          {productItems}
+        </div>
+        {modalData && (
+          <Modal close={() => setModalData(null)}>
+            <ImageView data={modalData} />
+          </Modal>
+        )}
+      </div>
+    </>
   );
 };
 
