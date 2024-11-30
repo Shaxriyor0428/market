@@ -5,6 +5,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const SignUp = ({ toggle, close }) => {
   const [showPassword, setShowPassword] = useState(false);
+
   const handleForm = (e) => {
     e.preventDefault();
     toast("Wow you have successfully signed up", {
@@ -21,27 +22,33 @@ const SignUp = ({ toggle, close }) => {
 
     close();
   };
+
   return (
-    <div className="dark:bg-slate-800 w-[400px] p-6 bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl">
+    <div className="dark:bg-slate-800 w-[400px] max-custom-sm:w-[250px] p-6 bg-white rounded-lg shadow-lg transform transition duration-300 hover:shadow-2xl mx-auto relative">
+      {/* Cancel button */}
+      <button
+        onClick={close}
+        className="absolute top-4 right-4 p-2 rounded-full bg-gray-300"
+      >
+        <MdOutlineCancel
+          size={22}
+          className="text-gray-600 bg-gray-300 rounded-full"
+        />
+      </button>
+
+      {/* Header */}
       <div className="flex flex-col gap-3 mb-6">
-        <button
-          onClick={close}
-          className="absolute top-5 right-7 p-2 rounded-full bg-gray-300"
-        >
-          <MdOutlineCancel
-            size={22}
-            className="text-gray-600 bg-gray-300 rounded-full"
-          />
-        </button>
-        <h2 className="text-center text-3xl font-bold text-blue-600 dark:text-white">
+        <h2 className="text-center text-2xl md:text-3xl font-bold text-blue-600 dark:text-white">
           Sign Up
         </h2>
-        <p className="dark:text-white text-center text-lg text-gray-600">
+        <p className="dark:text-white text-center text-sm md:text-lg text-gray-600">
           Start your{" "}
           <span className="font-semibold text-blue-500">30-day free trial</span>{" "}
           today!
         </p>
       </div>
+
+      {/* Form */}
       <form action="#" onSubmit={handleForm}>
         <div className="flex flex-col gap-5">
           <input
@@ -58,7 +65,7 @@ const SignUp = ({ toggle, close }) => {
             placeholder="Email Address"
             id="email"
           />
-          <div className="showpassword relative">
+          <div className="relative">
             <input
               required
               className="w-full outline-none rounded-lg py-3 px-5 border border-gray-300 shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
@@ -85,6 +92,8 @@ const SignUp = ({ toggle, close }) => {
           Sign Up
         </button>
       </form>
+
+      {/* Footer */}
       <p className="mt-4 text-center dark:text-white text-gray-600 text-sm">
         Already have an account?{" "}
         <a
